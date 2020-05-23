@@ -1,0 +1,81 @@
+.site-container {
+    text-align: center;
+    min-height: 100vh;
+    font-size: calc(8px + 2vmin);
+    background: url(../assets/flowerfix-background.svg) #454952 no-repeat center;
+    background-size: cover;
+}
+
+.app-main,
+#sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-main {
+    color: #000000;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+@media (min-width: 750px) {
+    .site-container {
+        background-size: unset;
+    }
+    .app-main {
+        margin: 0.1em auto 0.1em auto;
+        position: absolute;
+        width: 500px;
+        height: 900px;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 400px) {
+    #textual-logo {
+        width: 200px;
+        height: 40px;
+    }
+    #company-logo {
+        width: 300px;
+        height: 60px;
+    }
+}
+
+.app-main h1 {
+    color: #e64c4b;
+}
+
+.app-main input[type="submit"] {
+    margin: 0.5em;
+    padding: 0.7em;
+    border-radius: 50px;
+    background-color: #e64c4b;
+}
+
+#information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#information-list {
+    text-align: left;
+}
+
+#sign-up-form {
+    width: 70%;
+    flex: 2;
+}
