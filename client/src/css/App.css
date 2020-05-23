@@ -7,19 +7,13 @@
 }
 
 .app-main,
-#sign-up-form {
+#sign-up-form,
+#form-body,
+#information {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.app-main {
-    color: #000000;
-    border-radius: 10px;
-    background-color: white;
-    margin-left: 3em;
-    margin-right: 3em;
 }
 
 @media (min-width: 750px) {
@@ -29,8 +23,6 @@
     .app-main {
         margin: 0.1em auto 0.1em auto;
         position: absolute;
-        width: 500px;
-        height: 900px;
         top: 50%;
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
@@ -39,6 +31,15 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+}
+.app-main {
+    color: #000000;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 3em;
+    margin-right: 3em;
+    max-width: 400px;
+    height: 650px;
 }
 
 @media (max-width: 400px) {
@@ -54,6 +55,8 @@
 
 .app-main h1 {
     color: #e64c4b;
+    margin-bottom: 0;
+    font-size: 2em;
 }
 
 .app-main input[type="submit"] {
@@ -64,19 +67,34 @@
     color: white;
 }
 
+#information,
+#sign-up-form-container {
+    margin-right: 2em;
+    margin-left: 2em;
+    font-size: 0.7em;
+}
+
 #information {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     flex: 1;
 }
 
 #information-list {
+    font-weight: 400;
     text-align: left;
 }
 
+.information-li {
+    margin-top: 0.4em;
+}
+
 #sign-up-form {
-    width: 70%;
     flex: 2;
+}
+#textual-logo,
+#company-logo {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+#form-body {
+    text-align: left;
 }

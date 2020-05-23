@@ -1,49 +1,100 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
 import textualLogo from "../assets/textualPoweredByLogo.svg";
-import companyLogo from "../assets/flowerfix-logo.svg";
-import { text } from "express";
+import Axios from "axios";
 
+import OfferInformation from "./OfferInformation";
+import SplashPageForm from "./forms/SplashPageForm";
+import VerificationForm from "./forms/VerificationForm";
 interface Props {
     className: string;
 }
+
+const transitionEffects: object = {};
+
 const Main: React.FC<Props> = (props: Props) => {
+    const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+    // splash page form state variables
+    const [consentCheckbox, setConsentCheckbox] = useState<boolean>(false);
+    const [phoneNumberInput, setPhoneNumberInput] = useState<string>("");
+    const [phoneNumberError, setPhoneNumberError] = useState<string>("");
+    const [consentCheckboxError, setConsentCheckboxError] = useState<string>(
+        ""
+    );
+
+    const [randomStringNumber, setRandomStringNumber] = useState<string>("");
+
+    const [verificationNumberInput, setVerificationNumberInput] = useState<
+        string
+    >("");
+
+    const handleSplashPageFormSubmission = (
+        event: React.FormEvent<HTMLFormElement>
+    ) => {
+        event.preventDefault();
+        console.log(`checkbox value: ${consentCheckbox}`);
+        if (consentCheckbox && phoneNumberInput.length === 10) {
+            Axios.post("http://localhost:1337/sms", {
+                phoneNumberInput,
+            }).then((res) => {
+                setRandomStringNumber(res.data);
+                setIsSubmitted(true);
+                setConsentCheckbox(false);
+                setPhoneNumberInput("");
+            });
+        } else if (consentCheckbox && phoneNumberInput.length !== 10) {
+            setConsentCheckboxError("");
+            setPhoneNumberError("Please provide a valid phone number");
+        } else if (!consentCheckbox && phoneNumberInput.length === 10) {
+            setConsentCheckboxError("Please check 'yes' to continue");
+            setPhoneNumberError("");
+        } else {
+            setPhoneNumberError("Please provide a valid phone number");
+            setConsentCheckboxError("Please check 'yes' to continue");
+        }
+    };
+
+    const handleVerificationPageFormSubmission = (
+        event: React.FormEvent<HTMLFormElement>
+    ) => {
+        event.preventDefault();
+        console.log(randomStringNumber);
+        console.log(verificationNumberInput);
+        if (randomStringNumber.toString() === verificationNumberInput) {
+            // figure out why it isn't a string and why that's ok
+        } else setIsSubmitted(false);
+        // if random string matches, send to success page
+        // else return back to original state
+    };
+
     const { className } = props;
     return (
         <section className={className}>
-            <div id="information" className="information">
-                <img
-                    id="company-logo"
-                    src={companyLogo}
-                    alt="FlowerFix by FiftyFlowers"
+            {isSubmitted ? "" : <OfferInformation />}
+            {isSubmitted ? (
+                <VerificationForm
+                    verificationNumberInput={verificationNumberInput}
+                    setVerificationNumberInput={setVerificationNumberInput}
+                    onSubmitAction={handleVerificationPageFormSubmission}
                 />
-                <h1>Join the club</h1>
-                <h5>Get great deals and exclusive offers via text</h5>
-                <ol id="information-list" className="information">
-                    <li>Enter your cell phone</li>
-                    <li>Create your account (1 minute)</li>
-                    <li>We text you exclusive offers</li>
-                    <li>Reply "YES" to get the deal!</li>
-                </ol>
-            </div>
-            <form id="sign-up-form" className="sign-up-form">
-                <label htmlFor="">Cell Phone</label>
-                <input type="text" placeholder="(xxx)-xxx-xxxx" />
-                <input type="submit" value="Send Me Details" />
-                <h6>
-                    <input type="checkbox" /> By providing your mobile number,
-                    you consent to receive text message promotions and product
-                    campaigns from FlowerFix (Powered By Textual), and you also
-                    agree to our Privacy Policy and Terms. Standard messaging
-                    rates may apply.
-                </h6>
-            </form>
+            ) : (
+                <SplashPageForm
+                    onSubmitAction={handleSplashPageFormSubmission}
+                    consentCheckbox={consentCheckbox}
+                    setConsentCheckbox={setConsentCheckbox}
+                    phoneNumberInput={phoneNumberInput}
+                    setPhoneNumberInput={setPhoneNumberInput}
+                    phoneNumberError={phoneNumberError}
+                    consentCheckboxError={consentCheckboxError}
+                />
+            )}
             <img
                 id="textual-logo"
                 src={textualLogo}
                 alt="App powered by Textual"
-                width="300"
-                height="50"
+                width="250"
+                height="40"
             />
         </section>
     );
