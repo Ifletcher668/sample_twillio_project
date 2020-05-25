@@ -56,6 +56,7 @@ const SplashPageForm: React.FC<Props> = (props: Props) => {
                         you also agree to our Privacy Policy and Terms. Standard messaging rates may
                         apply.
                     </h6>
+                    <span className="errors">{consentCheckboxError}</span>
                     <input
                         id="sign-up-submit-btn"
                         className="submit-btn"
@@ -63,7 +64,6 @@ const SplashPageForm: React.FC<Props> = (props: Props) => {
                         value="Send Me Details"
                     />
                 </div>
-                <span className="errors">{consentCheckboxError}</span>
             </form>
             <TextualLogo />
         </section>

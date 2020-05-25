@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="site-container">
             <Router>
-                <SignUpPage path="/" className="app-main" />
+                <SignUpPage path="/" />
                 <SuccessPage path="/success" />
             </Router>
         </div>

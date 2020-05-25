@@ -4,16 +4,12 @@ import Axios from "axios";
 import OfferInformation from "./OfferInformation";
 import SplashPageForm from "./forms/SplashPageForm";
 import VerificationForm from "./forms/VerificationForm";
-import TextualLogo from "../logos/TextualLogo";
+
 import "../../css/SignUpPage.css";
 
-interface Props extends RouteComponentProps {
-    className: string;
-}
+interface Props extends RouteComponentProps {}
 
 const SignUpPage: React.FC<Props> = (props: Props) => {
-    const { className } = props;
-
     const [hasSubmittedPhoneNumber, setHasSubmittedPhoneNumber] = useState<boolean>(false);
 
     // splash page form state variables
@@ -39,6 +35,8 @@ const SignUpPage: React.FC<Props> = (props: Props) => {
                 setRandomNumber(res.data);
                 setConsentCheckbox(false);
                 setPhoneNumberInput("");
+                setConsentCheckboxError("");
+                setPhoneNumberError("");
                 setHasSubmittedPhoneNumber(true);
             });
         } else if (consentCheckbox && phoneNumberInput.length !== 10) {
@@ -49,7 +47,7 @@ const SignUpPage: React.FC<Props> = (props: Props) => {
             setPhoneNumberError("");
         } else {
             setPhoneNumberError("Please provide a valid phone number");
-            setConsentCheckboxError("Please check 'yes' to continue");
+            setConsentCheckboxError("Please check the box to continue");
         }
     };
 
