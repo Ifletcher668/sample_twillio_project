@@ -1,12 +1,16 @@
 import React from "react";
 import "./css/App.css";
-import Main from "./components/Main";
-import flowerFixBackground from "./assets/flowerfix-background.svg";
+import SignUpPage from "./components/signUp/SignUpPage";
+import { Router } from "@reach/router";
+import SuccessPage from "./components/success/SuccessPage";
 
 function App() {
     return (
         <div className="site-container">
-            <Main className="app-main" />
+            <Router>
+                <SignUpPage path="/" className="app-main" />
+                <SuccessPage path="/success" />
+            </Router>
         </div>
     );
 }
