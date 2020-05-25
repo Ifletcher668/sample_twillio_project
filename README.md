@@ -1,3 +1,3 @@
--   Betacanon Application coding challenge
+# Betacanon Application coding challenge
 
-    by Isiah Fletcher
+### by Isiah Fletcher
