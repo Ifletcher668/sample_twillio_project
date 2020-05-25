@@ -23,8 +23,8 @@ const VerificationForm: React.FC<Props> = (props: Props) => {
             <div id="verification">
                 <h4>Please enter the number sent to you</h4>
                 <form id="verification-form" className="flex-container" onSubmit={onSubmitAction}>
-                    <label>Number</label>
                     <input
+                        id="number-verification-input"
                         type="text"
                         value={verificationNumberInput}
                         onChange={(event: any) => {
