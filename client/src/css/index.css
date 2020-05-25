@@ -16,6 +16,7 @@ label,
 input button {
     margin-top: 0.8em;
     margin-bottom: 0.8em;
+    font-weight: 700;
 }
 
 h1,
@@ -23,23 +24,22 @@ h2,
 h3,
 input {
     font-family: "Lato", sans-serif;
-    font-weight: 700;
 }
 
 h4,
 h5,
-h6 {
+h6,
+label {
     font-family: "Playfair Display", serif;
-    font-weight: 200;
+    font-weight: 700;
     color: rgb(89, 93, 97);
 }
 
 h6,
 label {
-    font-size: 0.5em;
+    font-size: 0.6em;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

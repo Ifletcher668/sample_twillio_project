@@ -1,0 +1,18 @@
+#success-message {
+    align-self: center;
+    margin: auto;
+    min-height: 85vh;
+    min-width: 40vw;
+    border-radius: 10px;
+    background-color: white;
+    color: #444952;
+}
+
+#success-header {
+    padding: 0.5em;
+    background-color: #f1ebe8;
+    border-radius: 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 6vw));
+    min-height: 18vh;
+    text-align: left;
+}

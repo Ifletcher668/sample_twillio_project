@@ -3,98 +3,20 @@
     min-height: 100vh;
     font-size: calc(8px + 2vmin);
     background: url(../assets/flowerfix-background.svg) #454952 no-repeat center;
-    background-size: cover;
+    background-size: 130vh;
 }
 
-.app-main,
-#sign-up-form,
-#form-body,
-#information {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-@media (min-width: 750px) {
-    .site-container {
-        background-size: unset;
-    }
-    .app-main {
-        margin: 0.1em auto 0.1em auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
-}
-.app-main {
-    color: #000000;
-    border-radius: 10px;
-    background-color: white;
-    margin-left: 3em;
-    margin-right: 3em;
-    max-width: 400px;
-    height: 650px;
-}
-
-@media (max-width: 400px) {
-    #textual-logo {
-        width: 200px;
-        height: 40px;
-    }
-    #company-logo {
-        width: 300px;
-        height: 60px;
-    }
-}
-
-.app-main h1 {
-    color: #e64c4b;
-    margin-bottom: 0;
-    font-size: 2em;
-}
-
-.app-main input[type="submit"] {
-    margin: 0.5em;
-    padding: 0.7em;
-    border-radius: 50px;
-    background-color: #e64c4b;
-    color: white;
-}
-
-#information,
-#sign-up-form-container {
-    margin-right: 2em;
-    margin-left: 2em;
+.errors {
+    color: red;
+    font-weight: bold;
     font-size: 0.7em;
 }
 
-#information {
-    flex: 1;
+.container {
+    min-height: 100vh;
+    min-width: 100vw;
 }
-
-#information-list {
-    font-weight: 400;
-    text-align: left;
-}
-
-.information-li {
-    margin-top: 0.4em;
-}
-
-#sign-up-form {
-    flex: 2;
-}
-#textual-logo,
-#company-logo {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-#form-body {
-    text-align: left;
+.flex-container {
+    display: flex;
+    flex-direction: column;
 }
