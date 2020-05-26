@@ -26,19 +26,27 @@ const SignUpPage: React.FC<Props> = (props: Props) => {
 
     const handleSplashPageFormSubmission = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        // in case state returns to splash page,
+        // verification error should only be seen once
         setVerificationError("");
 
+        // better way to check validity of a phone number?
         if (consentCheckbox && phoneNumberInput.length === 10) {
             Axios.post("http://localhost:1337/sms", {
                 phoneNumberInput,
             }).then((res) => {
-                setRandomNumber(res.data);
+                // splash page form state reset
                 setConsentCheckbox(false);
                 setPhoneNumberInput("");
                 setConsentCheckboxError("");
                 setPhoneNumberError("");
+
+                setRandomNumber(res.data);
+                // will now show a new page state
                 setHasSubmittedPhoneNumber(true);
             });
+
+            // errors to fire appropriate to which error occurs
         } else if (consentCheckbox && phoneNumberInput.length !== 10) {
             setConsentCheckboxError("");
             setPhoneNumberError("Please provide a valid phone number");
