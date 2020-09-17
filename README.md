@@ -1,3 +1,3 @@
-# Betacanon Application coding challenge
+## A coding challenge for a job application
 
 ### by Isiah Fletcher
